@@ -1,10 +1,7 @@
 <template>
   <div>
    
-    <h1>About</h1>
-    <p>This is the about page</p>
-    <router-link to="/">home page</router-link>
-
+    <p>This is the single repo page</p>
 
   </div>
 
@@ -14,11 +11,8 @@
 <script>
 export default {
 
-  name: "AboutApp",
-  props: {
-    msg: String,
-  },
-    
+  name: "MyRepo",
+
   data() {
     return {
     };

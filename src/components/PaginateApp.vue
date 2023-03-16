@@ -29,20 +29,19 @@ export default {
 
 // fetchRepositories(){
 //     this.loading= true;
-//     try {
-//         const response =  await
+    
+//         const response = 
 //         fetch("https://api.github.com/users/Dr-Ace2/repos");
 
 //         console.log(response);
 //         this.repositories= response.data;
 //         this.totalPages= math.ceil(this.repositories.length/this.perPage);
 //         this.loading = false
-
-//     }
+    
+    
 // }
 
 // }
-
 // computed: {
 //     paginatedRepos(){
 //         const startIndex= (this.currentPage -1) * this.perPage;

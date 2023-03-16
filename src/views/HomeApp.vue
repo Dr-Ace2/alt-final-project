@@ -3,7 +3,10 @@
    
     <h1>Home</h1>
     <p>This is the home page</p>
-    <router-link to="/about">about page</router-link>
+
+    <UserCard fullname='muhammad' url="hhrhrh" name="namefhffg"/>
+    <router-link to="/repos">repos</router-link>
+
 
   </div>
 
@@ -11,12 +14,12 @@
 </template>
 
 <script>
+import UserCard from '../components/UserCard'
 export default {
-
+ 
   name: "HomeApp",
-  props: {
-    msg: String,
-  },
+  components:{UserCard},
+
     
   data() {
     return {
