@@ -1,7 +1,7 @@
 <template>
 <div class='single-whole'>
   <div class="single">
-    <h1>A single repo will show here</h1>
+    <!-- <h1>A single repo will show here</h1> -->
     <UserCard >
       <img v-bind:src="owner.avatar_url" alt="owner" class="owner-img"/>
       <p><span class="title">Owner:</span> {{ owner.login }}</p>

@@ -1,7 +1,7 @@
 <template>
   <div>
    
-    <p>Welcome to my Repos page</p>
+    <p class="allrepo-text">Welcome to my Repos page</p>
     <router-link to="/">home page</router-link>
     <div class='repo-wrap'>
         <div v-for='repo in repos' :key='repo.id' class='card'> 
@@ -73,13 +73,17 @@ export default {
   padding:30px;
   background-color:white;
 }
+.allrepo-text{
+  font-size: 30px
+;
+}
 
   .card{
     width: 400px;
     border-radius: 10px;
     background-color: rgb(66, 245, 233);;
     text-align: center;
-    box-shadow: 0 0 3px rgba(0, 0, 0, 0.6);
+    /* box-shadow: 0 0 0.2px rgba(0, 0, 0, 0.6); */
     margin: 0 auto;
     margin-top: 20px;
     transition: all ease-in-out .2s;
