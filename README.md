@@ -22,3 +22,6 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+### vercel deploy link
+This is the vercel deploy link for this project (https://alt-final-project.vercel.app/).
