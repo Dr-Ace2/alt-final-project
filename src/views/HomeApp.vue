@@ -1,11 +1,10 @@
 <template>
-  <div>
+  <div class="backg">
    
     <h1>Home</h1>
-    <p>This is the home page</p>
+    <p>Welcome to my Github App, click on the link below to view my repositories</p>
 
-    <UserCard fullname='muhammad' url="hhrhrh" name="namefhffg"/>
-    <router-link to="/repos">repos</router-link>
+    <router-link to="/repos" class="home-repo">repos</router-link>
 
 
   </div>
@@ -14,11 +13,9 @@
 </template>
 
 <script>
-import UserCard from '../components/UserCard'
 export default {
  
   name: "HomeApp",
-  components:{UserCard},
 
     
   data() {
@@ -37,5 +34,16 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
+
+ p{
+  font-size:30px;
+  
+}
+.home-repo{
+  color:green;
+  font-size:30px;
+  text-decoration:none;
+
+}
 
 </style>

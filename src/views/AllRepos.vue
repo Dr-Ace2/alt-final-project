@@ -1,21 +1,21 @@
 <template>
   <div>
    
-    <p>This is the AllRepos page</p>
+    <p>Welcome to my Repos page</p>
     <router-link to="/">home page</router-link>
-                <div class='repo-wrap'>
-                        <div v-for='repo in repos' :key='repo.id'> 
-                                <div class='card'>'
-                                        <p> <span class='title'>fullname</span>{{repo.full_name}}</p>
-                                        <p> <span class='title'>fullname</span>{{repo.url}}</p>
-                                        <p> <span class='title'>fullname</span>{{repo.name}}</p>
-                                        <p> <span class='title'>fullname</span>{{repo.id}}</p>
-                                        <p> <span class='title'>fullname</span>{{repo.default_branch}}</p>
-                                </div>
-                                
-                        </div>
+    <div class='repo-wrap'>
+        <div v-for='repo in repos' :key='repo.id' class='card'> 
+        <UserCard v-bind:repository="repo.name">
+            
+                  <p> <span class='title'>FULL_NAME:</span>{{repo.full_name}}</p>
+                  <p> <span class='title'>URL:</span>{{repo.url}}</p>
+                  <p> <span class='title'>NAME:</span>{{repo.name}}</p>
+                  <p> <span class='title'>ID:</span>{{repo.id}}</p>
+                  <p> <span class='title'>DEFAULT_BRANCH:</span>{{repo.default_branch}}</p>
+        </UserCard> 
+        </div>
                 
-                </div>
+    </div>
 
 
   </div>
@@ -24,9 +24,11 @@
 </template>
 
 <script>
-export default {
+import UserCard from "../components/UserCard.vue";
 
-  name: "AboutApp",
+export default {
+   components: { UserCard },
+  name: "AllRepos",
   
     
   data() {
@@ -47,7 +49,9 @@ export default {
     .then(data => {
     this.repos=data
 
-    });
+    })
+
+     .catch(err => console.log('an error occur ' + err));
 
   }
 
@@ -67,21 +71,26 @@ export default {
   flex-wrap:wrap;
   justify-content:space-around;
   padding:30px;
-  background-color:black;
+  background-color:white;
 }
 
   .card{
     width: 400px;
     border-radius: 10px;
-    background-color: rgb(191, 138, 69);
+    background-color: rgb(66, 245, 233);;
     text-align: center;
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.6);
-    /* margin: 25px 115px; */
     margin: 0 auto;
     margin-top: 20px;
     transition: all ease-in-out .2s;
+    text-decoration:none;
   }
 
+.title {
+  color: #000;
+  font-style: italic;
+  /* font-weight: bold; */
+}
 
 
 </style>

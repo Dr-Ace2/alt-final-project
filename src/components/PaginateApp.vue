@@ -41,7 +41,7 @@ export default {
     
 // }
 
-// }
+// },
 // computed: {
 //     paginatedRepos(){
 //         const startIndex= (this.currentPage -1) * this.perPage;
@@ -51,7 +51,7 @@ export default {
 //     },
 // },
 
-};
+ };
 
 </script>
 
