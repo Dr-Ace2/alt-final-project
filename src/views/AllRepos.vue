@@ -133,7 +133,7 @@ export default {
 }
 
   .card{
-    width: 400px;
+    width: 32%;
     border-radius: 50px;
     background-color: rgb(66, 245, 233);;
     text-align: center;
