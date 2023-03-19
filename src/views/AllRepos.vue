@@ -1,8 +1,9 @@
 <template>
   <div>
    
-    <p class="allrepo-text">Welcome to my Repos page</p>
-    <router-link to="/">home page</router-link>
+    <p class="allrepo-text">Welcome to my repositories</p>
+    <router-link to="/" class='router-text'>home page</router-link>
+
     <div class='repo-wrap'>
         <div v-for='repo in repos' :key='repo.id' class='card'> 
         <UserCard v-bind:repository="repo.name">
@@ -10,8 +11,8 @@
                   <p> <span class='title'>FULL_NAME:</span>{{repo.full_name}}</p>
                   <p> <span class='title'>URL:</span>{{repo.url}}</p>
                   <p> <span class='title'>NAME:</span>{{repo.name}}</p>
-                  <p> <span class='title'>ID:</span>{{repo.id}}</p>
-                  <p> <span class='title'>DEFAULT_BRANCH:</span>{{repo.default_branch}}</p>
+                  <!-- <p> <span class='title'>ID:</span>{{repo.id}}</p> -->
+                  <!-- <p> <span class='title'>DEFAULT_BRANCH:</span>{{repo.default_branch}}</p> -->
         </UserCard> 
         </div>
                 
@@ -27,21 +28,67 @@
 import UserCard from "../components/UserCard.vue";
 
 export default {
-   components: { UserCard },
+   components: {
+     UserCard,
+     },
+   
   name: "AllRepos",
   
     
   data() {
     return {
         repos: [],
+      // loading: false,
+      // page: 1,
+      // PER_PAGE: 6,
+      // background: {
+      //   JavaScript: "bg-orangem",
+      //   TypeScript: "bg-bluem",
+      //   HTML: "bg-[#E34C26]",
+      //   SCSS: "bg-[#C6538C]",
+      //   CSS: "bg-purple-700",
+      //   Vue: "bg-[#41B883]",
+      // }
     };
   },
+  // computed: {
+  //   skip() {
+  //     return this.page * this.PER_PAGE
+  //   },
+  //   indexOfFirstRepo() {
+  //     return this.skip - this.PER_PAGE
+  //   },
+  //   currentRepos() {
+  //     return this.repos.slice(this.indexOfFirstRepo, this.skip)
+  //   },
+  //   pages() {
+  //     return this.repos.length / this.PER_PAGE
+  //   }, 
+  //   buttons() {
+  //     return Array.from({ length: this.pages }, (value, index) => index + 1)
+  //   }
+  // },
 
   methods: {
-
+  //         async fetchRepos() {
+  //     this.loading = true 
+  //       const response = await fetch("https://api.github.com/users/Dr-Ace2/repos");
+  //     const data = await response.json() 
+  //       this.loading = false 
+  // this.repos = data
+  //   },
+  //   nextPage() {
+  //     this.page += 1
+  //   },
+  //   prevPage() {
+  //     this.page -= 1
+  //   }
   },
+  
 
   mounted(){
+
+      // this.fetchRepos()
 
      fetch("https://api.github.com/users/Dr-Ace2/repos")
 
@@ -51,7 +98,8 @@ export default {
 
     })
 
-     .catch(err => console.log('an error occur ' + err));
+
+    .catch(err => console.log('an error occur ' + err));
 
   }
 
@@ -74,8 +122,14 @@ export default {
   background-color:white;
 }
 .allrepo-text{
-  font-size: 30px
-;
+  font-size: 30px;
+  color:white;
+
+}
+.router-text{
+  color:white;
+  font-size: 22px;
+
 }
 
   .card{
@@ -93,7 +147,8 @@ export default {
 .title {
   color: #000;
   font-style: italic;
-  /* font-weight: bold; */
+  font-size:15px;
+  font-weight: bold;
 }
 
 

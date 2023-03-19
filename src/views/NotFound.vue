@@ -2,7 +2,7 @@
     <div>
         <img class="error-img" src="https://img.freepik.com/free-vector/oops-404-error-with-broken-robot-concept-illustration_114360-5529.jpg" alt="404 error"/>
         <div class="return">
-        <router-link to="/">Return to Home</router-link>
+        <router-link to="/" class='router-not'>Return to Home</router-link>
         </div>
     </div>
 </template>
@@ -15,6 +15,10 @@ export default {
 </script>
 
 <style>
+.router-not{
+    color:red;
+    font-size:20px;
+}
 .error-img{
     width: 500px;
     height: 500px;

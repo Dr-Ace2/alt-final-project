@@ -18,10 +18,10 @@
   </div>
 
   <div>
-    <router-link to="/">Home</router-link>
+    <router-link to="/" class='router-sing'>Home</router-link>
     </div>
     <div>
-    <router-link to="/repos">Repos</router-link>
+    <router-link to="/repos" class='router-sing'>Repos</router-link>
   </div>
 
   </div>
@@ -63,8 +63,13 @@ export default {
   background-color: rgb(210, 230, 247);
   border-radius: 20px;
 }
+.router-sing{
+  color:white;
+  font-size:20px;
+  /* text-decoration:none; */
+}
 .single-whole{
-  background-color:rgb(233, 235, 232);
+  background-color:rgb(36, 77, 143);
   border-radius: 10px;
 }
 .owner-img{

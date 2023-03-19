@@ -1,62 +1,69 @@
-<template>
-  <div>
+// <template>
+  <!-- <div>
    
 
     <p></p>
 
   </div>
+ -->
 
+// </template>
 
-</template>
+<!-- <script> -->
 
-<script>
-export default {
-
+<!-- export default {
   name: "PaginateApp",
-  
-  data() {
+  components: {
+    
+    },
+ data() {
     return {
-
-        repositories: [],
-        currentPage: 1,
-        perPage: 5,
-        totalPages:0,
-        loading: true,
-    };
+        repos : [],
+      loading: false,
+      page: 1,
+      PER_PAGE: 6,
+      
+      
+      }
   },
-
-// methods: {
-
-// fetchRepositories(){
-//     this.loading= true;
-    
-//         const response = 
-//         fetch("https://api.github.com/users/Dr-Ace2/repos");
-
-//         console.log(response);
-//         this.repositories= response.data;
-//         this.totalPages= math.ceil(this.repositories.length/this.perPage);
-//         this.loading = false
-    
-    
-// }
-
-// },
-// computed: {
-//     paginatedRepos(){
-//         const startIndex= (this.currentPage -1) * this.perPage;
-//         const endIndex = startIndex+this.perPage;
-//         return
-//         this.repositories.slice(startIndex,endIndex);
-//     },
-// },
-
- };
-
-</script>
-
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+  computed: {
+    skip() {
+      return this.page * this.PER_PAGE
+    },
+    indexOfFirstRepo() {
+      return this.skip - this.PER_PAGE
+    },
+    currentRepos() {
+      return this.repos.slice(this.indexOfFirstRepo, this.skip)
+    },
+    pages() {
+      return this.repos.length / this.PER_PAGE
+    }, 
+    buttons() {
+      return Array.from({ length: this.pages }, (value, index) => index + 1)
+    }
+  },
+  methods: {
+      
+    async fetchRepos() {
+      this.loading = true 
+        const response = await fetch("https://api.github.com/users/Dr-Ace2/repos");
+      const data = await response.json() 
+        this.loading = false 
+  this.repos = data
+    },
+    nextPage() {
+      this.page += 1
+    },
+    prevPage() {
+      this.page -= 1
+    }
+  },
+  mounted() {
+      this.fetchRepos()
+    } -->
+<!-- } -->
+<!-- </script> -->
 <style scoped>
 
 

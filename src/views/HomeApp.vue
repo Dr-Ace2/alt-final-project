@@ -34,13 +34,20 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
+.backg h1{
+  color:white;
+  /* font-style: italic; */
 
+}
  p{
+  color:white;
   font-size:30px;
+  font-style: italic;
+
   
 }
 .home-repo{
-  color:green;
+  color:red;
   font-size:30px;
   text-decoration:none;
 
