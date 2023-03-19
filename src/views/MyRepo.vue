@@ -58,10 +58,16 @@ export default {
 
 <style>
 .single{
-  width: 50%;
+  width: 70%;
   margin: 0 auto;
   background-color: rgb(210, 230, 247);
-  border-radius: 20px;
+  border-radius: 30px;
+}
+.title {
+  color: #000;
+  font-style: italic;
+  font-size:15px;
+  font-weight: bold;
 }
 .router-sing{
   color:white;
@@ -70,7 +76,7 @@ export default {
 }
 .single-whole{
   background-color:rgb(36, 77, 143);
-  border-radius: 10px;
+  border-radius: 50px;
 }
 .owner-img{
   width: 200px;
