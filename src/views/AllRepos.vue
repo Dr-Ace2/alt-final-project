@@ -120,9 +120,9 @@ export default {
 }
 
   .card{
-    width: 400px;
+    width: 340px;
     border-radius: 50px;
-    background-color: rgb(66, 245, 233);;
+    background-color: rgb(66, 245, 233);
     text-align: center;
     /* box-shadow: 0 0 0.2px rgba(0, 0, 0, 0.6); */
     margin: 0 auto;

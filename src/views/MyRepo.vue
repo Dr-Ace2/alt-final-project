@@ -58,14 +58,14 @@ export default {
 
 <style>
 .single{
+  /* width: 300px; */
   width: 70%;
-  /* margin: 0 auto; */
+  padding-right:100px;
+  margin: 0 auto;
   background-color: rgb(210, 230, 247);
   border-radius: 30px;
 }
-.single-whole{
-  /* margin: 0 auto; */
-}
+
 .title {
   color: #000;
   font-style: italic;
@@ -78,12 +78,14 @@ export default {
   /* text-decoration:none; */
 }
 .single-whole{
+  margin: 0 auto;
+
   background-color:rgb(36, 77, 143);
-  border-radius: 50px;
+  border-radius: 10px;
 }
 .owner-img{
-  /* margin: 0 auto; */
-  width: 30%;
-  height: 30%;
+  width: 200px;
+  height: 200px;
+
 }
 </style>
