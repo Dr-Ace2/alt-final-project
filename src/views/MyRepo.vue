@@ -59,9 +59,12 @@ export default {
 <style>
 .single{
   width: 70%;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   background-color: rgb(210, 230, 247);
   border-radius: 30px;
+}
+.single-whole{
+  /* margin: 0 auto; */
 }
 .title {
   color: #000;
@@ -79,7 +82,8 @@ export default {
   border-radius: 50px;
 }
 .owner-img{
-  width: 200px;
-  height: 200px;
+  /* margin: 0 auto; */
+  width: 30%;
+  height: 30%;
 }
 </style>
