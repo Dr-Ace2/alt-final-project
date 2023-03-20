@@ -1,119 +1,106 @@
 <template>
   <div>
-   
-    <p class="allrepo-text">Welcome to my repositories</p>
-    <router-link to="/" class='router-text'>home page</router-link>
-
-    <div class='repo-wrap'>
-        <div v-for='repo in repos' :key='repo.id' class='card'> 
-        <UserCard v-bind:repository="repo.name">
-            
-                  <p> <span class='title'>FULL_NAME:</span>{{repo.full_name}}</p>
-                  <p> <span class='title'>URL:</span>{{repo.url}}</p>
-                  <p> <span class='title'>NAME:</span>{{repo.name}}</p>
-                  <!-- <p> <span class='title'>ID:</span>{{repo.id}}</p> -->
-                  <!-- <p> <span class='title'>DEFAULT_BRANCH:</span>{{repo.default_branch}}</p> -->
-        </UserCard> 
+    <h1 class='allrepo-text'>Welcome to the list of all my github repositories</h1>
+    <router-link to="/" class='router-text'>Home</router-link>
+    <div class="repo-wrap">
+      <LoadingComponent :loading="isLoading" />
+      <div class="repo-container" v-if="!isLoading">
+        <div v-for="repo in currentRepos" :key="repo.id">
+          <UserCard :repository="repo.name">
+            <p><span class="title">Fullname:</span> {{ repo.full_name }}</p>
+            <p><span class="title">Url:</span> {{ repo.url }}</p>
+            <p><span class="title">Name:</span> {{ repo.name }}</p>
+            <!-- <p><span class="title">ID:</span> {{ repo.id }}</p> -->
+            <p>
+              <span class="title">Default Branch:</span>
+              {{ repo.default_branch }}
+            </p>
+          </UserCard>
         </div>
-                
+        <div class="btn-wrap">
+          <button
+            class="pagination-btn"
+            :disabled="page <= 1"
+            @click="prevPage"
+          >
+            prev
+          </button>
+          <button
+            class="pagination-btn"
+            v-for="(num, idx) in buttons"
+            :key="idx"
+            :disabled="page === num"
+            @click="page = num"
+          >
+            {{ num }}
+          </button>
+          <button
+            class="pagination-btn"
+            :disabled="page >= pages"
+            @click="nextPage"
+          >
+            next
+          </button>
+        </div>
+      </div>
     </div>
-
-
   </div>
-
-
 </template>
 
 <script>
 import UserCard from "../components/UserCard.vue";
-
+import LoadingComponent from "../components/LoadingComponent.vue";
 export default {
-   components: {
-     UserCard,
-     },
-   
-  name: "AllRepos",
-  
-    
+  components: { UserCard, LoadingComponent},
+  name: "RepoPage",
   data() {
     return {
-        repos: [],
-      // loading: false,
-      // page: 1,
-      // PER_PAGE: 6,
-      // background: {
-      //   JavaScript: "bg-orangem",
-      //   TypeScript: "bg-bluem",
-      //   HTML: "bg-[#E34C26]",
-      //   SCSS: "bg-[#C6538C]",
-      //   CSS: "bg-purple-700",
-      //   Vue: "bg-[#41B883]",
-      // }
+      isLoading: false,
+      repos: [],
+      page: 1,
+      per_page: 6,
     };
   },
-  // computed: {
-  //   skip() {
-  //     return this.page * this.PER_PAGE
-  //   },
-  //   indexOfFirstRepo() {
-  //     return this.skip - this.PER_PAGE
-  //   },
-  //   currentRepos() {
-  //     return this.repos.slice(this.indexOfFirstRepo, this.skip)
-  //   },
-  //   pages() {
-  //     return this.repos.length / this.PER_PAGE
-  //   }, 
-  //   buttons() {
-  //     return Array.from({ length: this.pages }, (value, index) => index + 1)
-  //   }
-  // },
-
   methods: {
-  //         async fetchRepos() {
-  //     this.loading = true 
-  //       const response = await fetch("https://api.github.com/users/Dr-Ace2/repos");
-  //     const data = await response.json() 
-  //       this.loading = false 
-  // this.repos = data
-  //   },
-  //   nextPage() {
-  //     this.page += 1
-  //   },
-  //   prevPage() {
-  //     this.page -= 1
-  //   }
+    nextPage() {
+      this.page += 1;
+    },
+    prevPage() {
+      this.page -= 1;
+    },
   },
-  
-
-  mounted(){
-
-      // this.fetchRepos()
-
-     fetch("https://api.github.com/users/Dr-Ace2/repos")
-
-    .then(response => response.json())
-    .then(data => {
-    this.repos=data
-
-    })
-
-
-    .catch(err => console.log('an error occur ' + err));
-
-  }
-
-
-
+  computed: {
+    skip() {
+      return this.page * this.per_page;
+    },
+    indexOfFirstRepo() {
+      return this.skip - this.per_page;
+    },
+    currentRepos() {
+      return this.repos.slice(this.indexOfFirstRepo, this.skip);
+    },
+    pages() {
+      return this.repos.length / this.per_page;
+    },
+    buttons() {
+      return Array.from({ length: this.pages }, (value, index) => index + 1);
+    },
+  },
+  mounted() {
+    this.isLoading = true;
+    fetch("https://api.github.com/users/Dr-Ace2/repos")
+      .then((res) => res.json())
+      .then((data) => {
+        this.isLoading = false;
+        this.repos = data;
+      })
+      .catch((err) => console.log("an error occur " + err));
+  },
 };
-
 </script>
 
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-
-.repo-wrap{
+<style>
+.repo-container{
   display:flex;
   flex-direction: row;
   flex-wrap:wrap;
@@ -151,5 +138,12 @@ export default {
   font-weight: bold;
 }
 
+.btn-wrap {
+  padding: 20px;
+}
 
+.pagination-btn {
+  padding: 10px;
+  margin: 10px;
+}
 </style>
