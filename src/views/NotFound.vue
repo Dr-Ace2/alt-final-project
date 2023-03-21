@@ -20,7 +20,7 @@ export default {
     font-size:20px;
 }
 .error-img{
-    width: 500px;
+    width: 400px;
     height: 500px;
 }
 

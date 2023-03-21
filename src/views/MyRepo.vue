@@ -84,6 +84,7 @@ export default {
   border-radius: 10px;
 }
 .owner-img{
+  border-radius: 50px;
   width: 200px;
   height: 200px;
 
